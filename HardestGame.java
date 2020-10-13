@@ -16,12 +16,12 @@ import javax.swing.JPanel;
  *
  * @author John Word
  */
-public class Game extends JPanel implements KeyListener, MouseListener {
+public class HardestGame extends JPanel implements KeyListener, MouseListener {
 
     private Timer timer;
     private int frameCount = 0;
     
-    public Game() {
+    public HardestGame() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
     }
@@ -32,9 +32,9 @@ public class Game extends JPanel implements KeyListener, MouseListener {
         
         frameCount++;
         
-        this.setBackground(Color.WHITE);		
+        this.setBackground(Color.BLUE);		
         g.setColor(Color.RED);
-
+        
         int x = frameCount;
         int y = 100;
         int size = 50;             
@@ -52,7 +52,7 @@ public class Game extends JPanel implements KeyListener, MouseListener {
     
     public static void main(String[] args) {
         JFrame j = new JFrame("Blobby Game");
-        Container c = new Game();
+        Container c = new HardestGame();
         j.add(c);
         j.pack();
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
