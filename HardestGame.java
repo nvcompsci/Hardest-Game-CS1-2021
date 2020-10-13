@@ -20,8 +20,10 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
 
     private Timer timer;
     private int frameCount = 0;
+    private Player player;
     
     public HardestGame() {
+        this.player = new Player(50,300);
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
     }
@@ -33,13 +35,8 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         frameCount++;
         
         this.setBackground(Color.BLUE);		
-        g.setColor(Color.RED);
         
-        int x = frameCount;
-        int y = 100;
-        int size = 50;             
-
-        g.fillRect(x, y, size, size); 		
+        player.draw(g);
     }
      
     private class ScheduleTask extends TimerTask {
