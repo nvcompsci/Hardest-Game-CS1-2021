@@ -9,8 +9,8 @@ import java.awt.Graphics;
  */
 public class Player {
     private int x, y;
+    //constants
     private final static int WIDTH = 50, HEIGHT = 50;
-    //constant
     private final static Color COLOR = Color.RED;
 
     public Player(int x, int y) {
@@ -18,9 +18,12 @@ public class Player {
         this.y = y;
     }
     
-    public void draw(Graphics g) {
+    //1. draw outline on shape
+    public void draw(Graphics g) {        
         g.setColor(COLOR);
         g.fillRect(x, y, WIDTH, HEIGHT);
+        g.setColor(Color.BLACK);
+        g.drawRect(x, y, WIDTH, HEIGHT);
     }
 
     public int getX() {
@@ -31,12 +34,12 @@ public class Player {
         return y;
     }
 
-    public int getWidth() {
-        return width;
+    public static int getWIDTH() {
+        return WIDTH;
     }
 
-    public int getHeight() {
-        return height;
+    public static int getHEIGHT() {
+        return HEIGHT;
     }    
     
 }

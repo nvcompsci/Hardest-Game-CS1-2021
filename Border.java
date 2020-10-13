@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hardestgame;
+
+import java.awt.Color;
+import java.awt.Graphics;
 
 /**
  *
- * @author jword
+ * @author John Word
  */
 public class Border {
+    private final int x, y, width, height;
+    private final static Color COLOR = Color.BLACK;
+    
+    //2.a. constructor for Border
+    
+    //2.b draws a rectangle
+    public void draw(Graphics g) {
+        
+    }
+
+    //2.c getters
     
 }
