@@ -63,6 +63,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
      @Override
     public void keyPressed(KeyEvent e) {
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
+        player.move(0,1);
     }
     
      @Override

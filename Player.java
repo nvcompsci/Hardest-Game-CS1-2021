@@ -13,8 +13,9 @@ public class Player {
     //declared and initialized
     //static means all Players
     //final means cannont change, constant
+    private static final int speed = 3;
     private static final int width = 30, height = 30;
-    private static final Color color = Color.RED;
+    private static final Color color = new Color(0xEE0088);
 
     public Player(int x, int y) {
         this.x = x;
@@ -26,8 +27,9 @@ public class Player {
         g.fillRect(x, y, width, height);
     }
     
-    public void move() {
-        
+    public void move(int dx, int dy) {
+        x += dx * speed;
+        y += dy * speed;
     }
 
     public int getX() {
