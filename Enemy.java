@@ -14,7 +14,7 @@ import java.awt.Graphics;
  */
 public class Enemy {
     private int x, y, vx, vy;
-    private final static int SPEED = 2;
+    private final static int SPEED = 5;
     private final static int WIDTH = 25, HEIGHT = 25;
     private final static Color COLOR = Color.BLUE;
     
@@ -32,6 +32,11 @@ public class Enemy {
         g.fillOval(x, y, WIDTH, HEIGHT);
         g.setColor(Color.BLACK);
         g.drawOval(x, y, WIDTH, HEIGHT);
+    }
+    
+    public void move() {
+        x += SPEED * vx;
+        y += SPEED * vy;
     }
     //4.c getters
 

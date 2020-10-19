@@ -56,6 +56,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         enemy.draw(g);
         player.draw(g);
         
+        enemy.move();
         //5.c. draw all objects
     }
      
@@ -82,6 +83,18 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
      @Override
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == 87) {
+            player.move(0,-1);
+        }
+        if (e.getKeyCode() == 65) {
+            player.move(-1,0);
+        }
+        if (e.getKeyCode() == 83) {
+            player.move(0,1);
+        }
+        if (e.getKeyCode() == 68) {
+            player.move(1,0);
+        }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
     }
     
