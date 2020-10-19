@@ -21,20 +21,17 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Timer timer;
     private int frameCount = 0;
     private Player player;
-    /*5.a. Declare these variables:
-    ? What is the correct data type for each?
-    -leftWall
-    -rightWall
-    -topWall
-    -leftWall
-    -enemy1
-    -enemy2
-    -start
-    -finish
-    */
+    private Enemy enemy;
+    private Goal start;
+    private Goal finish;
+    private Border border;
     
     public HardestGame() {
         this.player = new Player(50,300);
+        this.enemy = new Enemy(400,300,1,1);
+        this.start = new Goal(0,100,100,600,false);
+        this.finish = new Goal(700,100,100,600,true);
+        this.border = new Border(0,100,800,600);
         /*5.b initialize all variables from 5.a
         ? What values need to be passed to the constructor?
         -walls form a simple rectangle
@@ -52,9 +49,13 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         
         frameCount++;
         
-        this.setBackground( Color.CYAN );		
-        
+        this.setBackground( Color.WHITE );		
+        border.draw(g);
+        start.draw(g);
+        finish.draw(g);
+        enemy.draw(g);
         player.draw(g);
+        
         //5.c. draw all objects
     }
      

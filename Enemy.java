@@ -19,11 +19,36 @@ public class Enemy {
     private final static Color COLOR = Color.BLUE;
     
     //4.a constructor
+    public Enemy(int x, int y, int vx, int vy) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+    }
     
     //4.b draws a circle (oval)
     public void draw(Graphics g) {
-        
+        g.setColor(COLOR);
+        g.fillOval(x, y, WIDTH, HEIGHT);
+        g.setColor(Color.BLACK);
+        g.drawOval(x, y, WIDTH, HEIGHT);
+    }
+    //4.c getters
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
+
+    public static int getHEIGHT() {
+        return HEIGHT;
     }
     
-    //4.c getters
 }
