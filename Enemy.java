@@ -33,6 +33,15 @@ public class Enemy {
         g.setColor(Color.BLACK);
         g.drawOval(x, y, WIDTH, HEIGHT);
     }
+
+    //6.a. implement method collideWorldBounds
+    /**
+     * Checks if enemy hits border, if so, turns around
+     * @param border Boundaries of the room
+     */
+    public void collideWorldBounds(Border border) {
+
+    }
     
     public void move() {
         x += SPEED * vx;
