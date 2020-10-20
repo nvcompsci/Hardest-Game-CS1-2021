@@ -28,7 +28,7 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
     public HardestGame() {
         this.player = new Player(50,300);
-        this.enemy = new Enemy(400,300,1,1);
+        this.enemy = new Enemy(400,300,0,-1);
         this.start = new Goal(0,100,100,600,false);
         this.finish = new Goal(700,100,100,600,true);
         this.border = new Border(0,100,800,600);
@@ -48,9 +48,8 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         finish.draw(g);
         enemy.draw(g);
         player.draw(g);
-        
+        enemy.collideWorldBounds(border);
         enemy.move();
-
         //10. call any methods needed to make interactions happen
     }
 

@@ -40,7 +40,10 @@ public class Enemy {
      * @param border Boundaries of the room
      */
     public void collideWorldBounds(Border border) {
-
+        //top wall
+        if (this.y < border.getY()) {
+              this.vy *= -1;
+          }
     }
     
     public void move() {

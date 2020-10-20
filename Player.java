@@ -2,6 +2,7 @@ package hardestgame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  *
@@ -34,7 +35,11 @@ public class Player {
      * @param start the player respawns in middle of start if collides with enemy
      */
     public void playerVsEnemy(Enemy enemy, Goal start) {
-
+        Rectangle playerBounds = new Rectangle(x,y,WIDTH, HEIGHT);
+        Rectangle enemyBounds = new Rectangle(enemy.getX(), enemy.getY(), enemy.getWIDTH(), enemy.getHEIGHT());
+        if (playerBounds.intersects(enemyBounds)) {
+            this.x = 
+        }
     }
 
     //8.a. implement method isInBounds
