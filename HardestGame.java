@@ -21,11 +21,26 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     private Timer timer;
     private int frameCount = 0;
     private Player player;
+    private Enemy enemy;
+    private Goal start;
+    private Goal finish;
+    private Border border;
     
     public HardestGame() {
+        this.player = new Player(50,300);
+        this.enemy = new Enemy(400,300,1,1);
+        this.start = new Goal(0,100,100,600,false);
+        this.finish = new Goal(700,100,100,600,true);
+        this.border = new Border(0,100,800,600);
+        /*5.b initialize all variables from 5.a
+        ? What values need to be passed to the constructor?
+        -walls form a simple rectangle
+        -enemies somewhat in the middle but spaced apart
+        -start on left side, finish on right
+        -player actually is inside start
+        */
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
-        player = new Player(50,75);
     }
     
      @Override
@@ -34,9 +49,14 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         
         frameCount++;
         
-        this.setBackground(Color.BLUE);		
-        
+        this.setBackground( Color.WHITE );		
+        border.draw(g);
+        start.draw(g);
+        finish.draw(g);
+        enemy.draw(g);
         player.draw(g);
+        
+        //5.c. draw all objects
     }
      
     private class ScheduleTask extends TimerTask {
@@ -63,7 +83,6 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
      @Override
     public void keyPressed(KeyEvent e) {
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
-        player.move(0,1);
     }
     
      @Override
