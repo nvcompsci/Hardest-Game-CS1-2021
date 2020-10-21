@@ -15,7 +15,7 @@ public class Border {
     public Border(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
-        this.width = width;
+        this.width = width; 
         this.height = height;        
     }
 

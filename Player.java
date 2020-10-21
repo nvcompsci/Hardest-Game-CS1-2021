@@ -10,7 +10,7 @@ import java.awt.Graphics;
 public class Player {
     private int x, y;
     //constants
-    private final static int WIDTH = 50, HEIGHT = 50;
+    private final static int WIDTH = 50, HEIGHT = 50, SPEED = 4;
     private final static Color COLOR = Color.RED;
 
     public Player(int x, int y) {
@@ -27,8 +27,8 @@ public class Player {
     }
     
     public void move(int dx, int dy) {
-        x += dx;
-        y += dy;
+        x += dx * SPEED;
+        y += dy * SPEED;
     }
 
     public int getX() {
