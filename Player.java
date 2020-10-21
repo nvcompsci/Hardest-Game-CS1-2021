@@ -25,6 +25,11 @@ public class Player {
         g.setColor(Color.BLACK);
         g.drawRect(x, y, WIDTH, HEIGHT);
     }
+    
+    public void move(int dx, int dy) {
+        x += dx;
+        y += dy;
+    }
 
     public int getX() {
         return x;
