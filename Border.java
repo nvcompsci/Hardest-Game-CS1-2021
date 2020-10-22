@@ -8,20 +8,22 @@ import java.awt.Graphics;
  */
 
 public class Border {
-    private final int x, y, width, height;
+    private final int x, y, WIDTH, HEIGHT;
     private final static Color COLOR = Color.BLACK;
     
     //constructor for Border
-    public Border (int x, int y, int width, int height) {
+    public Border (int x, int y, int WIDTH, int HEIGHT) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.WIDTH = WIDTH;
+        this.HEIGHT = HEIGHT;
     }
     //draws a rectangle
     public void draw (Graphics g){
        g.setColor(COLOR);
-       g.fillRect(x, y, width, height); 
+       g.fillRect(x, y, WIDTH, HEIGHT); 
+       g.setColor(Color.BLACK);
+       g.drawRect(x, y, WIDTH, HEIGHT);
     
     }
     //getters
@@ -34,16 +36,13 @@ public class Border {
         return y;
     }
 
-    public int getWidth() {
-        return width;
+    public int getWIDTH() {
+        return WIDTH;
     }
 
-    public int getHeight() {
-        return height;
+    public int getHEIGHT() {
+        return HEIGHT;
     }
-
-    public static Color getCOLOR() {
-        return COLOR;
-    }
+    
     
 }

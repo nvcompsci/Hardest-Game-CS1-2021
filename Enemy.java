@@ -2,6 +2,7 @@ package hardestgame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 /**
  *
@@ -9,7 +10,7 @@ import java.awt.Graphics;
  */
 public class Enemy {
     private int x, y, vx, vy;
-    private final static int SPEED = 2;
+    private final static int SPEED = 10;
     private final static int WIDTH =25, HEIGHT=25;
     private final static Color COLOR = Color.BLUE;
     
@@ -29,7 +30,26 @@ public class Enemy {
         g.setColor(Color.BLACK);
        g.drawOval(x, y, WIDTH, HEIGHT);
     }
+    /**
+     * Check if enemy hits border, then turns around
+     * @param border the boundaries of the room
+    */
 
+    public void collideWorldBounds(Border border) {
+        Rectangle enemyBounds = new Rectangle (x, y, WIDTH, HEIGHT);
+        Rectangle borderBounds = new Rectangle (border.getX(), border.getY(), border.getWIDTH(), border.getHEIGHT());
+        if (!borderBounds.contains(enemyBounds)) {
+            vx *=-1;
+            vy *=-1;
+                    
+        }
+        
+    }
+    public void move() {
+        x+=vx*SPEED;
+        y+=vy*SPEED;
+    }
+    
     public int getX() {
         return x;
     }

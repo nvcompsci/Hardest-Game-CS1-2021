@@ -38,8 +38,8 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.border = new Border(0,100, 800,600);
         this.enemy1 = new Enemy (400, 300, 0, -1);
         this.enemy2 = new Enemy (600, 500, 0, 1);
-        this.start = new Goal (0,100, 100, 600, false);
-        this.finish = new Goal (700,100, 100, 600, true);
+        this.start = new Goal (0,100, 100, 600, true);
+        this.finish = new Goal (700,100, 100, 600, false);
     }
     
      @Override
@@ -51,13 +51,22 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         this.setBackground(Color.WHITE);		
         
         //draw all objects
-        player.draw(g);
-        enemy1.draw(g);
-        enemy2.draw(g);
         border.draw(g);
         start.draw(g);
         finish.draw(g);
-    }
+        player.draw(g);
+        enemy1.draw(g);
+        enemy2.draw(g);
+        
+        enemy1.move();
+        enemy2.move();
+        
+        enemy1.collideWorldBounds(border);
+        enemy2.collideWorldBounds(border);
+        player.playersVsEnemy(enemy1, start);
+        player.playersVsEnemy(enemy2, start);
+        player.playersVsGoal(finish);
+     }
      
     private class ScheduleTask extends TimerTask {
 
@@ -82,15 +91,30 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
      @Override
     public void keyPressed(KeyEvent e) {
+        //up
+        if(e.getKeyCode()==87 && player.getY()>border.getY()) {
+            player.move(0,-1);
+        }
+         //down
+         if(e.getKeyCode()==83 && player.getY()<border.getY()+border.getHEIGHT()-player.getWIDTH()) {
+            player.move(0,1);
+        }
+        //left 
+         if(e.getKeyCode()==65 && player.getX()>border.getX()) {
+            player.move(-1,0);
+        }
+         //right
+         if(e.getKeyCode()==68 && player.getX()<border.getX()+border.getWIDTH()-player.getWIDTH()) {
+            player.move(1,0);
+        }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
-        player.move(0,1);
+     
     }
+    
     
      @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode()==87) {
-            player.move(0,-1);
-        }
+       
     }
 
     @Override
