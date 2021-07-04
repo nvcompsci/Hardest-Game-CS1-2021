@@ -20,8 +20,18 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
 
     private Timer timer;
     private int frameCount = 0;
+    private Player player;
+    private Enemy enemy;
+    private Goal start;
+    private Goal finish;
+    private Border border;
     
     public HardestGame() {
+        this.player = new Player(50,300);
+        this.enemy = new Enemy(400,300,0,-1);
+        this.start = new Goal(0,100,100,600,false);
+        this.finish = new Goal(700,100,100,600,true);
+        this.border = new Border(0,100,800,600);
         timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/12);
     }
@@ -32,15 +42,18 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
         
         frameCount++;
         
-        this.setBackground(Color.BLUE);		
-        g.setColor(Color.RED);
-        
-        int x = frameCount;
-        int y = 100;
-        int size = 50;             
-
-        g.fillRect(x, y, size, size); 		
+        this.setBackground( Color.WHITE );		
+        border.draw(g);
+        start.draw(g);
+        finish.draw(g);
+        enemy.draw(g);
+        player.draw(g);
+        enemy.collideWorldBounds(border);
+        enemy.move();
+        //10. call any methods needed to make interactions happen
     }
+
+
      
     private class ScheduleTask extends TimerTask {
 
@@ -65,6 +78,19 @@ public class HardestGame extends JPanel implements KeyListener, MouseListener {
     
      @Override
     public void keyPressed(KeyEvent e) {
+        //8.c. update calls to player.move based on 8.b
+        if (e.getKeyCode() == 87) {
+            player.move(0,-1);
+        }
+        if (e.getKeyCode() == 65) {
+            player.move(-1,0);
+        }
+        if (e.getKeyCode() == 83) {
+            player.move(0,1);
+        }
+        if (e.getKeyCode() == 68) {
+            player.move(1,0);
+        }
         System.out.printf("\nKeyCode: %d was pressed",e.getKeyCode());
     }
     
